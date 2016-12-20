@@ -11,6 +11,8 @@ namespace TextTransformerApp
         public static string TransformTextUsingIterator(string str)
         {
             string outStr = "";
+            if (str == null)
+                return outStr+" ";
             IEnumerable<char> enumer = TextIterator(str);
             foreach (char c in enumer)
                 outStr += c;
@@ -19,6 +21,8 @@ namespace TextTransformerApp
 
         public static IEnumerable<char> TextIterator(string str)
         {
+            if (str == null)
+                yield return ' ';
             for (int i = 0; i < str.Length; i++)
                 yield return Char.ToUpper(str[i]);
         }
@@ -35,6 +39,8 @@ namespace TextTransformerApp
         public static string TransformTextUsingImplictGetEnumerator(string str)
         {
             string outStr = "";
+            if (str == null)
+                return outStr + " ";
             foreach (char c in str)
                 outStr += Char.ToUpper(c);
             return outStr;
@@ -47,6 +53,7 @@ namespace TextTransformerApp
             Console.WriteLine(TextTransformer.TransformTextUsingIterator("dfeecec"));
             Console.WriteLine(TextTransformer.TransformTextUsingExplictGetEnumerator("rvrvdeDfe"));
             Console.WriteLine(TextTransformer.TransformTextUsingImplictGetEnumerator("eedjwkx/d"));
+            Console.WriteLine(TextTransformer.TransformTextUsingIterator(null));
             Console.ReadKey();
         }
     }
